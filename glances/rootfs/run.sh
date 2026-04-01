@@ -1,4 +1,5 @@
 #!/usr/bin/env bashio
+# shellcheck shell=bash
 # ==============================================================================
 # Home Assistant Community Add-on: Glances
 # Run the Glances add-on
@@ -20,13 +21,13 @@ nginx_supervisor() {
         /etc/services.d/nginx/run &
         NGINX_PID=$!
         wait "${NGINX_PID}" || true
-        bashio::log.warning "NGiNX exited unexpectedly, restarting..."
+        bashio::log.warning "Nginx exited unexpectedly, restarting..."
         sleep 1
     done
 }
 
-# Start NGiNX with restart supervision
+# Start Nginx with restart supervision
 nginx_supervisor &
 
-# Start Glances (includes InfluxDB export if enabled)
+# Start Glances (includes InfluxDB/MQTT export when enabled)
 exec /etc/services.d/glances/run
