@@ -34,12 +34,11 @@ go beyond what upstream currently supports.
 
 ### Sent upstream / pending upstream
 
-| Change | Status |
-|--------|--------|
-| Remove deprecated `codenotary` signing | PR pending |
-| Remove deprecated `armv7` architecture | PR pending |
-| Fix 502 on first boot (`mkdir -p /config`) | PR pending |
-| Upgrade Glances 4.3.2 → 4.5.3 | PR pending |
+| Change | Upstream PR |
+|--------|------------|
+| Remove deprecated `codenotary` signing + `armv7` | [hassio-addons/addon-glances#603][upstream-603] |
+| Fix 502 on first boot (`mkdir -p /config`) | [hassio-addons/addon-glances#604][upstream-604] |
+| Full modernization (MQTT, hardening, deps) | [hassio-addons/addon-glances#609][upstream-609] |
 
 ### Fork-only changes
 
@@ -144,3 +143,6 @@ SOFTWARE.
 [releases]: https://github.com/florianhorner/addon-glances-patched/releases
 [repository]: https://github.com/florianhorner/addon-glances-patched
 [upstream]: https://github.com/hassio-addons/addon-glances
+[upstream-603]: https://github.com/hassio-addons/addon-glances/pull/603
+[upstream-604]: https://github.com/hassio-addons/addon-glances/pull/604
+[upstream-609]: https://github.com/hassio-addons/addon-glances/pull/609
