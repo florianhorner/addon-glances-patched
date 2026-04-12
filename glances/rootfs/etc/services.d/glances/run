@@ -5,6 +5,7 @@
 # Runs Glances
 # ==============================================================================
 declare -a options
+declare -a exporters
 
 bashio::log.info 'Starting Glances...'
 
@@ -20,14 +21,18 @@ fi
 
 if bashio::config.true 'influxdb.enabled'; then
     if bashio::config.equals 'influxdb.version' '2'; then
-        options+=(--export influxdb2)
+        exporters+=(influxdb2)
     else
-        options+=(--export influxdb)
+        exporters+=(influxdb)
     fi
 fi
 
 if bashio::config.true 'mqtt.enabled'; then
-    options+=(--export mqtt)
+    exporters+=(mqtt)
+fi
+
+if (( ${#exporters[@]} > 0 )); then
+    options+=(--export "$(IFS=,; echo "${exporters[*]}")")
 fi
 
 if bashio::debug; then

@@ -58,6 +58,7 @@ options:
     password: ""
     topic: glances
     topic_structure: per-metric
+  leave_front_door_open: false
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)
   process_info: bool
