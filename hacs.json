@@ -1,0 +1,6 @@
+{
+  "name": "Glances (Florian's fork)",
+  "description": "Personal fork of the Glances add-on with MQTT support, 502 ingress fix, and hardened security. Beta quality — not officially supported.",
+  "homeassistant": "0.92.0",
+  "render_readme": true
+}
