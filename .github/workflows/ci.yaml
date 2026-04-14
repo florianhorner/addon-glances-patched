@@ -22,7 +22,7 @@ jobs:
         run: |
           bad_lines="$(awk '
             /apk add --no-cache/ {in_apk=1}
-            in_apk && /^[[:space:]]+[a-z0-9][a-z0-9-]*=.*/ {print}
+            in_apk && /^[[:space:]]+[a-zA-Z0-9][a-zA-Z0-9_-]*=/ {print}
             in_apk && /&&/ {in_apk=0}
           ' glances/Dockerfile)"
 

@@ -47,10 +47,12 @@ if ((${#missing_formulae[@]} > 0)); then
     brew install "${missing_formulae[@]}"
 fi
 
+BREW_PREFIX="$(brew --prefix)"
+
 mkdir -p "$HOME/.docker"
 
-python3 <<'PY'
-import json
+python3 - "$BREW_PREFIX" <<'PY'
+import json, sys
 from pathlib import Path
 
 config_path = Path.home() / ".docker" / "config.json"
@@ -62,7 +64,7 @@ if config_path.exists():
     except json.JSONDecodeError:
         data = {}
 
-plugin_dir = "/opt/homebrew/lib/docker/cli-plugins"
+plugin_dir = f"{sys.argv[1]}/lib/docker/cli-plugins"
 extra_dirs = data.get("cliPluginsExtraDirs", [])
 if plugin_dir not in extra_dirs:
     extra_dirs.append(plugin_dir)
